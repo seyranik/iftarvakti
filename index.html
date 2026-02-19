@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5, user-scalable=yes">
+    <meta name="theme-color" content="#1a9f8a">
+    <meta name="description" content="Günlük namaz vakitleri ve iftar saati. Türkiye'nin tüm şehirleri için anlık iftar geri sayımı.">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="İftar Vakti - Namaz Vakitleri">
+    <meta property="og:description" content="Günlük namaz vakitleri ve iftar saati. Anlık geri sayım ile iftar vaktini kaçırmayın.">
+    
+    <!-- Apple Touch -->
+    <link rel="apple-touch-icon" href="./icons/icon-192x192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="İftar Vakti">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="./manifest.json">
+    <link rel="icon" href="./icons/icon-72x72.png" type="image/png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,100..1000&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <title>İftar Vakti - Namaz Vakitleri</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body class="dark">
+    <!-- Ramadan Progress Bar -->
+    <div id="ramadan-progress" class="ramadan-progress hidden">
+        <div class="progress-bar">
+            <div id="progress-fill" class="progress-fill"></div>
+        </div>
+        <div class="progress-text">
+            <span id="ramadan-day-text">Ramazan'ın 1. günü — %3</span>
+        </div>
+    </div>
+
+    <!-- Ad Container -->
+    <div id="ad-container" class="ad-container hidden">
+        <img src="./reklam.png" alt="Reklam" id="ad-image" onerror="this.parentElement.classList.add('hidden')">
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="city-selector">
+                <i data-lucide="map-pin" class="icon-small"></i>
+                <select id="city-select">
+                    <option value="9146">Adana</option>
+                    <option value="9206">Ankara</option>
+                    <option value="9225">Antalya</option>
+                    <option value="9335">Bursa</option>
+                    <option value="9381">Diyarbakır</option>
+                    <option value="9440" selected>Erzincan</option>
+                    <option value="9450">Erzurum</option>
+                    <option value="9470">Eskişehir</option>
+                    <option value="9479">Gaziantep</option>
+                    <option value="9541">İstanbul</option>
+                    <option value="9560">İzmir</option>
+                    <option value="9620">Kayseri</option>
+                    <option value="9676">Konya</option>
+                    <option value="9703">Malatya</option>
+                    <option value="9737">Mersin</option>
+                    <option value="9819">Samsun</option>
+                    <option value="9901">Trabzon</option>
+                    <option value="9929">Van</option>
+                </select>
+            </div>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Tema değiştir">
+                <i data-lucide="sun" id="theme-icon"></i>
+            </button>
+        </header>
+
+        <!-- Countdown Section -->
+        <section id="countdown-section" class="countdown-section">
+            <div id="loading" class="loading">
+                <div class="spinner"></div>
+                <p>Yükleniyor...</p>
+            </div>
+            
+            <div id="countdown-content" class="countdown-content hidden">
+                <p class="countdown-label">İFTAR'A KALAN SÜRE</p>
+                <div class="countdown-timer">
+                    <div class="countdown-unit">
+                        <span id="hours" class="countdown-digit">00</span>
+                        <span class="countdown-unit-label">SAAT</span>
+                    </div>
+                    <span class="countdown-separator">:</span>
+                    <div class="countdown-unit">
+                        <span id="minutes" class="countdown-digit">00</span>
+                        <span class="countdown-unit-label">DAKİKA</span>
+                    </div>
+                    <span class="countdown-separator">:</span>
+                    <div class="countdown-unit">
+                        <span id="seconds" class="countdown-digit">00</span>
+                        <span class="countdown-unit-label">SANİYE</span>
+                    </div>
+                </div>
+                <div class="iftar-time">
+                    <p class="iftar-label">Bugünkü İftar Vakti</p>
+                    <p id="iftar-time" class="iftar-value">--:--</p>
+                </div>
+            </div>
+
+            <div id="iftar-passed" class="iftar-passed hidden">
+                <p class="countdown-label">İFTAR VAKTİ</p>
+                <h1 class="iftar-message">İftar vakti geldi!</h1>
+                <p class="iftar-submessage">Afiyet olsun</p>
+            </div>
+        </section>
+
+        <!-- Prayer Times Grid -->
+        <section id="prayer-grid" class="prayer-grid hidden">
+            <div class="prayer-card" data-prayer="Imsak">
+                <i data-lucide="sunrise" class="prayer-icon"></i>
+                <span class="prayer-name">İMSAK</span>
+                <span id="time-imsak" class="prayer-time">--:--</span>
+            </div>
+            <div class="prayer-card" data-prayer="Gunes">
+                <i data-lucide="sun" class="prayer-icon"></i>
+                <span class="prayer-name">GÜNEŞ</span>
+                <span id="time-gunes" class="prayer-time">--:--</span>
+            </div>
+            <div class="prayer-card" data-prayer="Ogle">
+                <i data-lucide="sun" class="prayer-icon"></i>
+                <span class="prayer-name">ÖĞLE</span>
+                <span id="time-ogle" class="prayer-time">--:--</span>
+            </div>
+            <div class="prayer-card" data-prayer="Ikindi">
+                <i data-lucide="cloud-sun" class="prayer-icon"></i>
+                <span class="prayer-name">İKİNDİ</span>
+                <span id="time-ikindi" class="prayer-time">--:--</span>
+            </div>
+            <div class="prayer-card highlighted" data-prayer="Aksam">
+                <i data-lucide="sunset" class="prayer-icon"></i>
+                <span class="prayer-name">AKŞAM</span>
+                <span id="time-aksam" class="prayer-time">--:--</span>
+            </div>
+            <div class="prayer-card" data-prayer="Yatsi">
+                <i data-lucide="moon" class="prayer-icon"></i>
+                <span class="prayer-name">YATSI</span>
+                <span id="time-yatsi" class="prayer-time">--:--</span>
+            </div>
+        </section>
+
+        <!-- Schedule Button -->
+        <section class="schedule-section">
+            <button id="schedule-btn" class="schedule-btn">
+                <i data-lucide="calendar"></i>
+                <span id="schedule-btn-text">Ramazan İmsakiyesi</span>
+            </button>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Namaz vakitleri T.C. Diyanet İşleri Başkanlığı verilerine dayanmaktadır.</p>
+            <p class="developer-credit">This site was developed by Seyrani Kenger.</p>
+        </footer>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal-overlay" class="modal-overlay hidden">
+        <div class="modal">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <i data-lucide="calendar" class="icon-small"></i>
+                    <span id="modal-title-text">Erzincan — Ramazan İmsakiyesi 2026</span>
+                </div>
+                <button id="modal-close" class="modal-close" aria-label="Kapat">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <p id="modal-subtitle" class="modal-subtitle">19 Şubat - 19 Mart 2026 (29 gün)</p>
+            <div class="modal-content">
+                <table id="schedule-table" class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th class="col-day">Gün</th>
+                            <th class="col-date">Tarih</th>
+                            <th>İmsak</th>
+                            <th>Güneş</th>
+                            <th>Öğle</th>
+                            <th>İkindi</th>
+                            <th class="col-aksam">Akşam</th>
+                            <th>Yatsı</th>
+                        </tr>
+                    </thead>
+                    <tbody id="schedule-body">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
