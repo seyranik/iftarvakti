@@ -1,6 +1,6 @@
 /**
  * IFTAR VAKTI - Prayer Times PWA
- * JavaScript Application
+ * JavaScript Application with Daily Iftar Menu System
  */
 
 // ============================================
@@ -37,6 +37,115 @@ const RAMADAN_2026 = {
 };
 
 // ============================================
+// MENU DATA - Traditional Turkish Iftar Items
+// ============================================
+const MENU_DATA = {
+    // Çorbalar (Soups) - 50 items
+    soups: [
+        "Mercimek Çorbası", "Ezogelin Çorbası", "Tarhana Çorbası", "Yayla Çorbası",
+        "Domates Çorbası", "Şehriye Çorbası", "Tavuk Suyu Çorbası", "Düğün Çorbası",
+        "Paça Çorbası", "Işkembe Çorbası", "Sebze Çorbası", "Kremalı Mantar Çorbası",
+        "Patates Çorbası", "Havuç Çorbası", "Brokoli Çorbası", "Karnabahar Çorbası",
+        "Kabak Çorbası", "Bezelye Çorbası", "Yeşil Mercimek Çorbası", "Bulgur Çorbası",
+        "Erişte Çorbası", "Analı Kızlı Çorbası", "Toyga Çorbası", "Süzme Mercimek",
+        "Köfteli Şehriye Çorbası", "Pirinç Çorbası", "Un Çorbası", "Yoğurt Çorbası",
+        "Kemik Suyu Çorbası", "Bamya Çorbası", "Lahana Çorbası", "Pazı Çorbası",
+        "Semizotu Çorbası", "Ispanak Çorbası", "Kestane Çorbası", "Balkabağı Çorbası",
+        "Soğan Çorbası", "Sarımsak Çorbası", "Enginar Çorbası", "Pırasa Çorbası",
+        "Kereviz Çorbası", "Turp Çorbası", "Pancar Çorbası", "Fasulye Çorbası",
+        "Nohut Çorbası", "Barbunya Çorbası", "Börülce Çorbası", "Arabaşı Çorbası",
+        "Ekşili Köfte Çorbası", "Tutmaç Çorbası"
+    ],
+    
+    // Ana Yemekler (Main Dishes) - 50 items
+    mainDishes: [
+        "Kuru Fasulye", "Nohutlu Pilav", "Etli Türlü", "Tavuk Sote",
+        "İzmir Köfte", "Karnıyarık", "İmam Bayıldı", "Hünkar Beğendi",
+        "Tas Kebabı", "Orman Kebabı", "Terbiyeli Köfte", "Kadınbudu Köfte",
+        "Patlıcan Musakka", "Kabak Musakka", "Etli Kapuska", "Etli Lahana Sarması",
+        "Yaprak Sarma", "Etli Biber Dolması", "Etli Patlıcan Dolması", "Etli Kabak Dolması",
+        "Tavuk Tandır", "Fırın Tavuk", "Tavuklu Güveç", "Et Güveç",
+        "Kuzu Tandır", "Kuzu Incik", "Dana Haşlama", "Et Kavurma",
+        "Piliç Şnitzel", "Tavuk Pirzola", "Bonfile", "Antrikot",
+        "Etli Taze Fasulye", "Etli Bezelye", "Etli Enginar", "Etli Kereviz",
+        "Etli Pırasa", "Ciğer Tava", "Arnavut Ciğeri", "Sac Kavurma",
+        "Mantarlı Tavuk", "Kremalı Tavuk", "Fırın Köfte", "Dalyan Köfte",
+        "Sultanahmet Köfte", "Tekirdağ Köfte", "Akçaabat Köfte", "İnegöl Köfte",
+        "Tepsi Kebabı", "Ali Nazik Kebabı"
+    ],
+    
+    // Pilav/Makarna (Side Dishes) - 50 items
+    sideDishes: [
+        "Pirinç Pilavı", "Bulgur Pilavı", "Şehriyeli Pilav", "Tereyağlı Pilav",
+        "İç Pilav", "Nohutlu Pilav", "Bademli Pilav", "Fıstıklı Pilav",
+        "Domatesli Pilav", "Sebzeli Pilav", "Mantarlı Pilav", "Havuçlu Pilav",
+        "Kestaneli Pilav", "Üzümlü Pilav", "Kuş Üzümlü Pilav", "Tavuklu Pilav",
+        "Etli Pilav", "Midyeli Pilav", "Karides Pilav", "Balıklı Pilav",
+        "Makarna", "Fiyonk Makarna", "Kalem Makarna", "Burgu Makarna",
+        "Erişte", "Mantı", "Kayseri Mantısı", "Türk Raviolisi",
+        "Fettuccine", "Penne", "Rigatoni", "Spagetti",
+        "Lazanya", "Cannelloni", "Tortellini", "Gnocchi",
+        "Domates Soslu Makarna", "Kremalı Makarna", "Bolonez Makarna", "Carbonara",
+        "Peynirli Makarna", "Fırın Makarna", "Kıymalı Makarna", "Sebzeli Makarna",
+        "Arpa Şehriye Pilavı", "Tel Şehriye Pilavı", "Kuskus", "Kinoa Pilavı",
+        "Yeşil Mercimekli Bulgur", "Domatesli Bulgur"
+    ],
+    
+    // Salatalar (Salads) - 50 items
+    salads: [
+        "Çoban Salata", "Mevsim Salata", "Akdeniz Salata", "Yeşil Salata",
+        "Roka Salata", "Marul Salata", "Havuç Salata", "Lahana Salata",
+        "Turp Salata", "Pancar Salata", "Patates Salata", "Makarna Salata",
+        "Ton Balıklı Salata", "Tavuk Salata", "Sezar Salata", "Yunan Salata",
+        "İtalyan Salata", "Rus Salata", "Amerikan Salata", "Waldorf Salata",
+        "Coleslaw", "Kısır", "Gavurdağı Salata", "Piyaz",
+        "Çingene Salata", "Karışık Salata", "Bahar Salata", "Yaz Salata",
+        "Enginar Salata", "Semizotu Salata", "Nohut Salata", "Fasulye Salata",
+        "Mercimek Salata", "Kinoa Salata", "Bulgur Salata", "Kuskus Salata",
+        "Közlenmiş Biber Salata", "Közlenmiş Patlıcan Salata", "Avokado Salata", "Mango Salata",
+        "Nar Ekşili Salata", "Limonlu Salata", "Yoğurtlu Salata", "Tahinli Salata",
+        "Zeytinyağlı Salata", "Soğanlı Salata", "Sarımsaklı Salata", "Otlu Salata",
+        "Dereotlu Salata", "Maydanozlu Salata"
+    ],
+    
+    // Mezeler (Appetizers) - 60 items
+    mezes: [
+        "Humus", "Haydari", "Atom", "Acılı Ezme",
+        "Muhammara", "Babaganuş", "Köpoğlu", "Patlıcan Salata",
+        "Tarator", "Cacık", "Yoğurtlu Patlıcan", "Yoğurtlu Kabak",
+        "Yoğurtlu Semizotu", "Yoğurtlu Havuç", "Yoğurtlu Ispanak", "Yoğurtlu Kereviz",
+        "Zeytinyağlı Fasulye", "Zeytinyağlı Barbunya", "Zeytinyağlı Bakla", "Zeytinyağlı Enginar",
+        "Zeytinyağlı Kereviz", "Zeytinyağlı Pırasa", "Zeytinyağlı Lahana", "Zeytinyağlı Bamya",
+        "Turşu", "Zeytin", "Peynir Tabağı", "Beyaz Peynir",
+        "Kaşar Peynir", "Lor Peynir", "Tulum Peynir", "Çökelek",
+        "Fava", "Mercimek Köfte", "Patates Köfte", "Mücver",
+        "Sigara Böreği", "Paçanga Böreği", "Lahmacun", "Pide",
+        "Gözleme", "Katmer", "Simit", "Poğaça",
+        "Açma", "Pişi", "Çiğ Köfte", "İçli Köfte",
+        "Fellah Köfte", "Kısır", "Ezme", "Şakşuka",
+        "Patlıcan Biber Kızartma", "Kabak Kızartma", "Havuç Tarator", "Kereviz Tarator",
+        "Sarımsaklı Yoğurt", "Naneli Yoğurt", "Biber Turşusu", "Lahana Turşusu"
+    ],
+    
+    // Tatlılar (Desserts) - 50 items
+    desserts: [
+        "Baklava", "Kadayıf", "Künefe", "Şöbiyet",
+        "Sütlaç", "Muhallebi", "Kazandibi", "Tavuk Göğsü",
+        "Keşkül", "Aşure", "Güllaç", "Lokma",
+        "Tulumba", "Şekerpare", "Revani", "Kalburabasma",
+        "Trileçe", "Tiramisu", "Profiterol", "Supangle",
+        "Mozaik Pasta", "Cheesecake", "Brownie", "Magnolia",
+        "San Sebastian", "Fırın Sütlaç", "Höşmerim", "Kabak Tatlısı",
+        "Ayva Tatlısı", "Armut Tatlısı", "Elma Tatlısı", "Incir Tatlısı",
+        "Kayısı Tatlısı", "Erik Tatlısı", "Şeftali Tatlısı", "Panna Cotta",
+        "Crème Brûlée", "Mousse", "Puding", "Komposto",
+        "Hoşaf", "Helva", "Tahin Helva", "Un Helva",
+        "İrmik Helva", "Zerde", "Paluze", "Cevizli Sucuk",
+        "Pestil", "Cezerye"
+    ]
+};
+
+// ============================================
 // STATE
 // ============================================
 let currentCity = '9440'; // Erzincan default
@@ -45,6 +154,7 @@ let monthlyData = [];
 let fullRamadanData = [];
 let countdownInterval = null;
 let theme = 'dark';
+let ramadanMenus = null; // Cached menus for all 29 days
 
 // ============================================
 // DOM ELEMENTS
@@ -53,7 +163,6 @@ const elements = {
     ramadanProgress: document.getElementById('ramadan-progress'),
     progressFill: document.getElementById('progress-fill'),
     ramadanDayText: document.getElementById('ramadan-day-text'),
-    adContainer: document.getElementById('ad-container'),
     citySelect: document.getElementById('city-select'),
     themeToggle: document.getElementById('theme-toggle'),
     themeIcon: document.getElementById('theme-icon'),
@@ -71,8 +180,135 @@ const elements = {
     modalClose: document.getElementById('modal-close'),
     modalTitleText: document.getElementById('modal-title-text'),
     modalSubtitle: document.getElementById('modal-subtitle'),
-    scheduleBody: document.getElementById('schedule-body')
+    scheduleBody: document.getElementById('schedule-body'),
+    // Menu elements
+    menuDayBadge: document.getElementById('menu-day-badge'),
+    menuSoup: document.getElementById('menu-soup'),
+    menuMain: document.getElementById('menu-main'),
+    menuSide: document.getElementById('menu-side'),
+    menuSalad: document.getElementById('menu-salad'),
+    menuMeze1: document.getElementById('menu-meze1'),
+    menuMeze2: document.getElementById('menu-meze2'),
+    menuDessert: document.getElementById('menu-dessert'),
+    menuNote: document.getElementById('menu-note')
 };
+
+// ============================================
+// SEEDED RANDOM NUMBER GENERATOR
+// ============================================
+class SeededRandom {
+    constructor(seed) {
+        this.seed = seed;
+    }
+    
+    // Mulberry32 algorithm - deterministic PRNG
+    next() {
+        let t = this.seed += 0x6D2B79F5;
+        t = Math.imul(t ^ t >>> 15, t | 1);
+        t ^= t + Math.imul(t ^ t >>> 7, t | 61);
+        return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    }
+    
+    // Get random integer in range [0, max)
+    nextInt(max) {
+        return Math.floor(this.next() * max);
+    }
+    
+    // Shuffle array using Fisher-Yates
+    shuffle(array) {
+        const result = [...array];
+        for (let i = result.length - 1; i > 0; i--) {
+            const j = this.nextInt(i + 1);
+            [result[i], result[j]] = [result[j], result[i]];
+        }
+        return result;
+    }
+}
+
+// ============================================
+// MENU GENERATION SYSTEM
+// ============================================
+function generateAllRamadanMenus() {
+    // Check localStorage first
+    const cached = localStorage.getItem('ramadan-menus-2026');
+    if (cached) {
+        try {
+            ramadanMenus = JSON.parse(cached);
+            if (ramadanMenus && ramadanMenus.length === 29) {
+                return ramadanMenus;
+            }
+        } catch (e) {
+            localStorage.removeItem('ramadan-menus-2026');
+        }
+    }
+    
+    // Generate new menus using deterministic algorithm
+    // Seed based on year to ensure consistency
+    const baseSeed = 2026 * 1000;
+    
+    // Pre-shuffle all arrays to ensure no repeats
+    const rng = new SeededRandom(baseSeed);
+    
+    const shuffledSoups = rng.shuffle(MENU_DATA.soups).slice(0, 29);
+    const shuffledMains = rng.shuffle(MENU_DATA.mainDishes).slice(0, 29);
+    const shuffledSides = rng.shuffle(MENU_DATA.sideDishes).slice(0, 29);
+    const shuffledSalads = rng.shuffle(MENU_DATA.salads).slice(0, 29);
+    const shuffledMezes = rng.shuffle(MENU_DATA.mezes);
+    const shuffledDesserts = rng.shuffle(MENU_DATA.desserts).slice(0, 29);
+    
+    // Generate 29 unique menus
+    ramadanMenus = [];
+    
+    for (let day = 1; day <= 29; day++) {
+        const menu = {
+            day: day,
+            soup: shuffledSoups[day - 1],
+            main: shuffledMains[day - 1],
+            side: shuffledSides[day - 1],
+            salad: shuffledSalads[day - 1],
+            meze1: shuffledMezes[(day - 1) * 2],
+            meze2: shuffledMezes[(day - 1) * 2 + 1],
+            dessert: shuffledDesserts[day - 1]
+        };
+        ramadanMenus.push(menu);
+    }
+    
+    // Cache in localStorage
+    localStorage.setItem('ramadan-menus-2026', JSON.stringify(ramadanMenus));
+    
+    return ramadanMenus;
+}
+
+function getMenuForDay(dayNumber) {
+    if (!ramadanMenus) {
+        generateAllRamadanMenus();
+    }
+    
+    if (dayNumber >= 1 && dayNumber <= 29) {
+        return ramadanMenus[dayNumber - 1];
+    }
+    
+    // Return sample menu for outside Ramadan
+    return ramadanMenus[0]; // Day 1 menu as sample
+}
+
+function displayMenu(menu, isRamadan) {
+    elements.menuSoup.textContent = menu.soup;
+    elements.menuMain.textContent = menu.main;
+    elements.menuSide.textContent = menu.side;
+    elements.menuSalad.textContent = menu.salad;
+    elements.menuMeze1.textContent = menu.meze1;
+    elements.menuMeze2.textContent = menu.meze2;
+    elements.menuDessert.textContent = menu.dessert;
+    
+    if (isRamadan) {
+        elements.menuDayBadge.textContent = `${menu.day}. Gün`;
+        elements.menuNote.classList.add('hidden');
+    } else {
+        elements.menuDayBadge.textContent = 'Örnek';
+        elements.menuNote.classList.remove('hidden');
+    }
+}
 
 // ============================================
 // UTILITY FUNCTIONS
@@ -180,7 +416,6 @@ function applyTheme() {
     document.body.classList.add(theme);
     localStorage.setItem('prayer-theme', theme);
     
-    // Update icon
     if (elements.themeIcon) {
         elements.themeIcon.setAttribute('data-lucide', theme === 'dark' ? 'sun' : 'moon');
         lucide.createIcons();
@@ -196,7 +431,6 @@ function toggleTheme() {
 // CITY
 // ============================================
 function initCity() {
-    // Check URL parameter
     const urlParams = new URLSearchParams(window.location.search);
     const urlCity = urlParams.get('city');
     
@@ -208,7 +442,6 @@ function initCity() {
             currentCity = cityId;
         }
     } else {
-        // Check localStorage
         const savedCity = localStorage.getItem('prayer-city');
         if (savedCity && CITY_NAMES[savedCity]) {
             currentCity = savedCity;
@@ -223,41 +456,50 @@ function changeCity(cityId) {
     currentCity = cityId;
     localStorage.setItem('prayer-city', cityId);
     
-    // Clear existing data
     prayerTimes = null;
     monthlyData = [];
     fullRamadanData = [];
     
-    // Stop countdown
     if (countdownInterval) {
         clearInterval(countdownInterval);
         countdownInterval = null;
     }
     
-    // Fetch new data
     fetchPrayerTimes();
 }
 
 // ============================================
-// RAMADAN PROGRESS
+// RAMADAN PROGRESS & MENU
 // ============================================
 function updateRamadanProgress() {
     const info = getRamadanInfo();
+    
+    // Generate menus on first call
+    if (!ramadanMenus) {
+        generateAllRamadanMenus();
+    }
     
     if (info.isRamadan) {
         elements.ramadanProgress.classList.remove('hidden');
         elements.progressFill.style.width = `${info.progress}%`;
         elements.ramadanDayText.textContent = `Ramazan'ın ${info.dayOfRamadan}. günü — %${Math.round(info.progress)}`;
-        
         elements.scheduleBtnText.textContent = 'Ramazan İmsakiyesi';
         
-        // Adjust container margin
-        if (elements.adContainer) {
-            elements.adContainer.style.marginTop = '52px';
-        }
+        // Display today's menu
+        const todayMenu = getMenuForDay(info.dayOfRamadan);
+        displayMenu(todayMenu, true);
+        
+        // Add margin for fixed progress bar
+        document.querySelector('.container').style.paddingTop = '4rem';
     } else {
         elements.ramadanProgress.classList.add('hidden');
         elements.scheduleBtnText.textContent = 'Aylık Takvim';
+        
+        // Display sample menu
+        const sampleMenu = getMenuForDay(1);
+        displayMenu(sampleMenu, false);
+        
+        document.querySelector('.container').style.paddingTop = '2rem';
     }
 }
 
@@ -306,7 +548,6 @@ async function fetchPrayerTimes() {
 function processApiData(data) {
     monthlyData = data;
     
-    // Find today's times
     const todayStr = getTodayStr();
     const todayData = data.find(day => day.MiladiTarihKisa === todayStr);
     
@@ -331,10 +572,7 @@ function processApiData(data) {
         };
     }
     
-    // Build full Ramadan data
     buildFullRamadanData(data);
-    
-    // Update UI
     updatePrayerGrid();
     updateRamadanProgress();
     startCountdown();
@@ -425,11 +663,9 @@ function startCountdown() {
         let diff = aksamTime - now;
         
         if (diff <= 0 && now < yatsiTime) {
-            // Iftar passed
             elements.countdownContent.classList.add('hidden');
             elements.iftarPassed.classList.remove('hidden');
         } else if (now >= yatsiTime) {
-            // After Yatsi - countdown to tomorrow
             elements.countdownContent.classList.remove('hidden');
             elements.iftarPassed.classList.add('hidden');
             
@@ -458,7 +694,6 @@ function startCountdown() {
             elements.minutes.textContent = countdown.minutes;
             elements.seconds.textContent = countdown.seconds;
         } else {
-            // Before Iftar
             elements.countdownContent.classList.remove('hidden');
             elements.iftarPassed.classList.add('hidden');
             
@@ -552,28 +787,21 @@ function renderMonthlySchedule() {
 // EVENT LISTENERS
 // ============================================
 function initEventListeners() {
-    // Theme toggle
     elements.themeToggle.addEventListener('click', toggleTheme);
     
-    // City change
     elements.citySelect.addEventListener('change', (e) => {
         changeCity(e.target.value);
     });
     
-    // Schedule button
     elements.scheduleBtn.addEventListener('click', openModal);
-    
-    // Modal close
     elements.modalClose.addEventListener('click', closeModal);
     
-    // Click outside modal to close
     elements.modalOverlay.addEventListener('click', (e) => {
         if (e.target === elements.modalOverlay) {
             closeModal();
         }
     });
     
-    // ESC to close modal
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && !elements.modalOverlay.classList.contains('hidden')) {
             closeModal();
@@ -585,22 +813,15 @@ function initEventListeners() {
 // INITIALIZE
 // ============================================
 function init() {
-    // Initialize Lucide icons
     lucide.createIcons();
-    
-    // Initialize theme
     initTheme();
-    
-    // Initialize city
     initCity();
     
-    // Update Ramadan progress
+    // Generate menus first
+    generateAllRamadanMenus();
+    
     updateRamadanProgress();
-    
-    // Set up event listeners
     initEventListeners();
-    
-    // Fetch prayer times
     fetchPrayerTimes();
     
     // Check for date change every minute
@@ -613,7 +834,6 @@ function init() {
     }, 60000);
 }
 
-// Start app when DOM is ready
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
 } else {

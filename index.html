@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5, user-scalable=yes">
     <meta name="theme-color" content="#1a9f8a">
-    <meta name="description" content="Günlük namaz vakitleri ve iftar saati. Türkiye'nin tüm şehirleri için anlık iftar geri sayımı.">
+    <meta name="description" content="Günlük namaz vakitleri ve iftar saati. Türkiye'nin tüm şehirleri için anlık iftar geri sayımı ve günlük iftar menüsü.">
     
     <!-- Open Graph -->
     <meta property="og:type" content="website">
@@ -33,12 +33,6 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body class="dark">
-
-    <!-- Ad Container -->
-    <div id="ad-container" class="ad-container">
-        <img src="./reklam.png" alt="Reklam" id="ad-image">
-    </div>
-    
     <!-- Ramadan Progress Bar -->
     <div id="ramadan-progress" class="ramadan-progress hidden">
         <div class="progress-bar">
@@ -48,8 +42,6 @@
             <span id="ramadan-day-text">Ramazan'ın 1. günü — %3</span>
         </div>
     </div>
-
-    
 
     <div class="container">
         <!-- Header -->
@@ -120,6 +112,100 @@
             </div>
         </section>
 
+        <!-- Daily Iftar Menu -->
+        <section id="menu-section" class="menu-section">
+            <div class="menu-card">
+                <div class="menu-header">
+                    <div class="menu-title">
+                        <i data-lucide="utensils" class="menu-icon"></i>
+                        <h2>Günün İftar Menüsü</h2>
+                    </div>
+                    <span id="menu-day-badge" class="menu-day-badge">1. Gün</span>
+                </div>
+                <div id="menu-content" class="menu-content">
+                    <div class="menu-grid">
+                        <!-- Soup -->
+                        <div class="menu-item">
+                            <div class="menu-item-icon soup">
+                                <i data-lucide="soup"></i>
+                            </div>
+                            <div class="menu-item-details">
+                                <span class="menu-item-category">Çorba</span>
+                                <span id="menu-soup" class="menu-item-name">—</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Main Dish -->
+                        <div class="menu-item">
+                            <div class="menu-item-icon main">
+                                <i data-lucide="beef"></i>
+                            </div>
+                            <div class="menu-item-details">
+                                <span class="menu-item-category">Ana Yemek</span>
+                                <span id="menu-main" class="menu-item-name">—</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Side Dish -->
+                        <div class="menu-item">
+                            <div class="menu-item-icon side">
+                                <i data-lucide="wheat"></i>
+                            </div>
+                            <div class="menu-item-details">
+                                <span class="menu-item-category">Pilav / Makarna</span>
+                                <span id="menu-side" class="menu-item-name">—</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Salad -->
+                        <div class="menu-item">
+                            <div class="menu-item-icon salad">
+                                <i data-lucide="salad"></i>
+                            </div>
+                            <div class="menu-item-details">
+                                <span class="menu-item-category">Salata</span>
+                                <span id="menu-salad" class="menu-item-name">—</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Meze 1 -->
+                        <div class="menu-item">
+                            <div class="menu-item-icon meze">
+                                <i data-lucide="grape"></i>
+                            </div>
+                            <div class="menu-item-details">
+                                <span class="menu-item-category">Meze</span>
+                                <span id="menu-meze1" class="menu-item-name">—</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Meze 2 -->
+                        <div class="menu-item">
+                            <div class="menu-item-icon meze">
+                                <i data-lucide="cherry"></i>
+                            </div>
+                            <div class="menu-item-details">
+                                <span class="menu-item-category">Meze</span>
+                                <span id="menu-meze2" class="menu-item-name">—</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Dessert -->
+                        <div class="menu-item dessert-item">
+                            <div class="menu-item-icon dessert">
+                                <i data-lucide="cake-slice"></i>
+                            </div>
+                            <div class="menu-item-details">
+                                <span class="menu-item-category">Tatlı</span>
+                                <span id="menu-dessert" class="menu-item-name">—</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p id="menu-note" class="menu-note hidden">Örnek Menü (Ramazan Dışı)</p>
+            </div>
+        </section>
+
         <!-- Prayer Times Grid -->
         <section id="prayer-grid" class="prayer-grid hidden">
             <div class="prayer-card" data-prayer="Imsak">
@@ -164,8 +250,8 @@
 
         <!-- Footer -->
         <footer class="footer">
-            <p>This site was developed by Seyrani Kenger.</p>
-            <p class="developer-credit">Namaz vakitleri T.C. Diyanet İşleri Başkanlığı verilerine dayanmaktadır.</p>
+            <p>Namaz vakitleri T.C. Diyanet İşleri Başkanlığı verilerine dayanmaktadır.</p>
+            <p class="developer-credit">This site was developed by Seyrani Kenger.</p>
         </footer>
     </div>
 
