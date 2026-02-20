@@ -1,0 +1,294 @@
+{
+  "ramadan_menus": [
+    {
+      "day": 1,
+      "type": "standard",
+      "soup": "Ezogelin Çorbası",
+      "main": "Fırın Tavuk But",
+      "side": "Pirinç Pilavı",
+      "salad_or_meze": "Çoban Salata",
+      "dessert": "Güllaç"
+    },
+    {
+      "day": 2,
+      "type": "standard",
+      "soup": "Mercimek Çorbası",
+      "main": "Etli Kuru Fasulye",
+      "side": "Pirinç Pilavı",
+      "salad_or_meze": "Turşu",
+      "dessert": "Revani"
+    },
+    {
+      "day": 3,
+      "type": "standard",
+      "soup": "Yayla Çorbası",
+      "main": "Karnıyarık",
+      "side": "Bulgur Pilavı",
+      "salad_or_meze": "Cacık",
+      "dessert": "Kemalpaşa Tatlısı"
+    },
+    {
+      "day": 4,
+      "type": "standard",
+      "soup": "Domates Çorbası",
+      "main": "Tas Kebabı",
+      "side": "Şehriyeli Pirinç Pilavı",
+      "salad_or_meze": "Mevsim Salata",
+      "dessert": "Sütlaç"
+    },
+    {
+      "day": 5,
+      "type": "standard",
+      "soup": "Tarhana Çorbası",
+      "main": "Fırında Köfte Patates",
+      "side": "Yoğurtlu Makarna",
+      "salad_or_meze": "Havuç Tarator",
+      "dessert": "Trileçe"
+    },
+    {
+      "day": 6,
+      "type": "standard",
+      "soup": "Sebze Çorbası",
+      "main": "Tavuk Sote",
+      "side": "Pirinç Pilavı",
+      "salad_or_meze": "Göbek Salata",
+      "dessert": "Kazandibi"
+    },
+    {
+      "day": 7,
+      "type": "standard",
+      "soup": "Düğün Çorbası",
+      "main": "İzmir Köfte",
+      "side": "Bulgur Pilavı",
+      "salad_or_meze": "Mor Lahana Salatası",
+      "dessert": "Baklava"
+    },
+    {
+      "day": 8,
+      "type": "standard",
+      "soup": "Mantar Çorbası",
+      "main": "Etli Nohut",
+      "side": "Pirinç Pilavı",
+      "salad_or_meze": "Turşu",
+      "dessert": "Muhallebi"
+    },
+    {
+      "day": 9,
+      "type": "standard",
+      "soup": "Şehriye Çorbası",
+      "main": "Ali Nazik",
+      "side": "Fırın Patates",
+      "salad_or_meze": "Mevsim Salata",
+      "dessert": "Keşkül"
+    },
+    {
+      "day": 10,
+      "type": "standard",
+      "soup": "Ezogelin Çorbası",
+      "main": "Etli Taze Fasulye",
+      "side": "Pirinç Pilavı",
+      "salad_or_meze": "Cacık",
+      "dessert": "Şekerpare"
+    },
+    {
+      "day": 11,
+      "type": "standard",
+      "soup": "Yayla Çorbası",
+      "main": "Fırın Tavuk Baget",
+      "side": "Bulgur Pilavı",
+      "salad_or_meze": "Çoban Salata",
+      "dessert": "Güllaç"
+    },
+    {
+      "day": 12,
+      "type": "standard",
+      "soup": "Mercimek Çorbası",
+      "main": "Hünkar Beğendi",
+      "side": "Pirinç Pilavı",
+      "salad_or_meze": "Roka Salatası",
+      "dessert": "Kazandibi"
+    },
+    {
+      "day": 13,
+      "type": "standard",
+      "soup": "Tarhana Çorbası",
+      "main": "Sebzeli Güveç",
+      "side": "Şehriyeli Bulgur Pilavı",
+      "salad_or_meze": "Yoğurtlu Salata",
+      "dessert": "Sütlaç"
+    },
+    {
+      "day": 14,
+      "type": "standard",
+      "soup": "Domates Çorbası",
+      "main": "Izgara Köfte",
+      "side": "Patates Püresi",
+      "salad_or_meze": "Çoban Salata",
+      "dessert": "Revani"
+    },
+    {
+      "day": 15,
+      "type": "standard",
+      "soup": "Sebze Çorbası",
+      "main": "Tavuk Şiş",
+      "side": "Bulgur Pilavı",
+      "salad_or_meze": "Göbek Salata",
+      "dessert": "Trileçe"
+    },
+    {
+      "day": 16,
+      "type": "standard",
+      "soup": "Düğün Çorbası",
+      "main": "Etli Kabak Yemeği",
+      "side": "Pirinç Pilavı",
+      "salad_or_meze": "Cacık",
+      "dessert": "Kemalpaşa Tatlısı"
+    },
+    {
+      "day": 17,
+      "type": "standard",
+      "soup": "Mantar Çorbası",
+      "main": "Sac Kavurma",
+      "side": "Bulgur Pilavı",
+      "salad_or_meze": "Mevsim Salata",
+      "dessert": "Fırın Sütlaç"
+    },
+    {
+      "day": 18,
+      "type": "standard",
+      "soup": "Ezogelin Çorbası",
+      "main": "Fırında Levrek",
+      "side": "Zeytinyağlı Enginar",
+      "salad_or_meze": "Roka Salatası",
+      "dessert": "Muhallebi"
+    },
+    {
+      "day": 19,
+      "type": "standard",
+      "soup": "Yayla Çorbası",
+      "main": "Kıymalı Ispanak",
+      "side": "Pirinç Pilavı",
+      "salad_or_meze": "Turşu",
+      "dessert": "Şekerpare"
+    },
+    {
+      "day": 20,
+      "type": "standard",
+      "soup": "Mercimek Çorbası",
+      "main": "Beşamel Soslu Tavuk",
+      "side": "Fırın Makarna",
+      "salad_or_meze": "Çoban Salata",
+      "dessert": "Kazandibi"
+    },
+    {
+      "day": 21,
+      "type": "standard",
+      "soup": "Tarhana Çorbası",
+      "main": "Etli Patlıcan Musakka",
+      "side": "Bulgur Pilavı",
+      "salad_or_meze": "Cacık",
+      "dessert": "Revani"
+    },
+    {
+      "day": 22,
+      "type": "standard",
+      "soup": "Domates Çorbası",
+      "main": "Izgara Tavuk Kanat",
+      "side": "Pirinç Pilavı",
+      "salad_or_meze": "Mevsim Salata",
+      "dessert": "Güllaç"
+    },
+    {
+      "day": 23,
+      "type": "standard",
+      "soup": "Sebze Çorbası",
+      "main": "Etli Bezelye",
+      "side": "Pirinç Pilavı",
+      "salad_or_meze": "Havuç Salatası",
+      "dessert": "Süt Helvası"
+    },
+    {
+      "day": 24,
+      "type": "standard",
+      "soup": "Düğün Çorbası",
+      "main": "İç Pilavlı Tavuk Dolması",
+      "side": "Zeytinyağlı Yaprak Sarma",
+      "salad_or_meze": "Mevsim Salata",
+      "dessert": "Baklava"
+    },
+    {
+      "day": 25,
+      "type": "standard",
+      "soup": "Mantar Çorbası",
+      "main": "Kuzu Tandır",
+      "side": "Bulgur Pilavı",
+      "salad_or_meze": "Roka Salatası",
+      "dessert": "Keşkül"
+    },
+    {
+      "day": 26,
+      "type": "standard",
+      "soup": "Ezogelin Çorbası",
+      "main": "Sebzeli Tavuk Güveç",
+      "side": "Şehriyeli Pirinç Pilavı",
+      "salad_or_meze": "Cacık",
+      "dessert": "Muhallebi"
+    },
+    {
+      "day": 27,
+      "type": "kadir_gecesi_special",
+      "soup": "Bademli Tavuk Çorbası",
+      "main": "Hünkar Beğendi",
+      "side": "İç Pilav",
+      "salad_or_meze": "Zeytinyağlı Yaprak Sarma",
+      "dessert": "Nar ve Antep Fıstıklı Güllaç"
+    },
+    {
+      "day": 28,
+      "type": "standard",
+      "soup": "Mercimek Çorbası",
+      "main": "Fırın Köfte",
+      "side": "Patates Püresi",
+      "salad_or_meze": "Çoban Salata",
+      "dessert": "Revani"
+    },
+    {
+      "day": 29,
+      "type": "standard",
+      "soup": "Yayla Çorbası",
+      "main": "Etli Kuru Fasulye",
+      "side": "Pirinç Pilavı",
+      "salad_or_meze": "Turşu",
+      "dessert": "Fırın Sütlaç"
+    }
+  ],
+  "eid_special_menus": [
+    {
+      "day": 1,
+      "type": "eid_special",
+      "soup": "Mercimek Çorbası",
+      "main": "Kurban Kavurma",
+      "side": "Pirinç Pilavı",
+      "salad_or_meze": "Çoban Salata",
+      "dessert": "Baklava"
+    },
+    {
+      "day": 2,
+      "type": "eid_special",
+      "soup": "Yayla Çorbası",
+      "main": "Fırında Tavuk Dolması",
+      "side": "İç Pilav",
+      "salad_or_meze": "Zeytinyağlı Yaprak Sarma",
+      "dessert": "Şöbiyet"
+    },
+    {
+      "day": 3,
+      "type": "eid_special",
+      "soup": "Ezogelin Çorbası",
+      "main": "Izgara Köfte",
+      "side": "Patates Püresi",
+      "salad_or_meze": "Rus Salatası",
+      "dessert": "Kadayıf"
+    }
+  ]
+}
