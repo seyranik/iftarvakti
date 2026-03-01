@@ -1,7 +1,7 @@
 {
-  "short_name": "İftar Vakti",
-  "name": "İftar Vakti - Namaz Vakitleri",
-  "description": "Günlük namaz vakitleri ve iftar saati",
+  "short_name": "Namaz Vakitleri",
+  "name": "Namaz Vakitleri - İftar Saati",
+  "description": "Günlük namaz vakitleri ve iftar saati. Türkiye'nin tüm şehirleri için anlık iftar geri sayımı.",
   "icons": [
     {
       "src": "./icons/icon-72x72.png",
@@ -54,8 +54,8 @@
   ],
   "start_url": "./",
   "display": "standalone",
-  "theme_color": "#1a9f8a",
-  "background_color": "#0a1612",
+  "theme_color": "#0D9488",
+  "background_color": "#0D0D0F",
   "orientation": "portrait",
   "scope": "./",
   "lang": "tr",
