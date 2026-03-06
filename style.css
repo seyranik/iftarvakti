@@ -41,7 +41,8 @@ h1,h2,h3,h4,h5,h6{ font-family:"Outfit",sans-serif; }
 .hidden{ display:none!important; }
 
 /* Container */
-.container{ max-width:1024px; margin:0 auto; padding:2rem 1rem; }
+.container{ max-width:1024px; margin:0 auto; padding:1.5rem 1rem 2rem; }
+.has-ramadan .container{ padding-top:0; }
 
 /* Ramadan Progress */
 .ramadan-progress{ position:fixed; top:0; left:0; right:0; z-index:100; }
@@ -50,8 +51,20 @@ h1,h2,h3,h4,h5,h6{ font-family:"Outfit",sans-serif; }
 .progress-text{ background-color:var(--accent-light); backdrop-filter:blur(8px); padding:0.5rem 1rem; text-align:center; }
 .progress-text span{ font-size:0.875rem; font-weight:500; color:var(--accent); }
 
+/* Sticky top wrapper */
+.sticky-top{
+  position:sticky; top:0; z-index:100;
+  background-color:var(--bg-primary);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+}
+
 /* Header */
-.header{ display:flex; align-items:center; justify-content:space-between; margin-bottom:2rem; padding-top:1rem; }
+.header{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0.75rem 1rem;
+  margin-bottom:0;
+}
 .city-selector{ display:flex; align-items:center; gap:0.5rem; }
 .city-selector .icon-small{ width:20px; height:20px; color:var(--accent); opacity:0.7; }
 .city-selector select{
@@ -218,6 +231,10 @@ h1,h2,h3,h4,h5,h6{ font-family:"Outfit",sans-serif; }
   .modal{ max-height:90vh; }
   .notif-subtitle{ display:none; }
 }
+
+.footer a{ color:var(--accent); text-decoration:none; }
+.footer a:hover{ text-decoration:underline; }
+.footer p{ margin-bottom:0.5rem; }
 
 /* Animations */
 @keyframes fadeInUp{ from{ opacity:0; transform:translateY(20px); } to{ opacity:1; transform:translateY(0); } }
