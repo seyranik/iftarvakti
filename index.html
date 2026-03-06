@@ -33,9 +33,7 @@
         <select id="city-select"></select>
       </div>
       <div style="display:flex;gap:8px;align-items:center">
-        <button id="notif-btn" class="theme-toggle" title="Bildirimler" style="display:none">
-          <svg id="notif-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
-        </button>
+
         <button id="theme-toggle" class="theme-toggle">
           <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
         </button>
@@ -98,16 +96,6 @@
     <!-- Namaz kartları -->
     <div class="prayer-grid" id="prayer-grid"></div>
 
-    <!-- Bildirim ayarları -->
-    <div id="notif-settings" class="notif-settings hidden">
-      <div class="notif-settings-header">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
-        <span>Bildirim Ayarları</span>
-        <span class="notif-subtitle">Vakitten 5 dakika önce bildirim al</span>
-      </div>
-      <div id="notif-toggles" class="notif-toggles"></div>
-    </div>
-
     <!-- Takvim butonu -->
     <div class="schedule-section">
       <button id="schedule-btn" class="schedule-btn">
@@ -122,6 +110,26 @@
       <p class="developer-credit">Namaz Vakti PWA</p>
     </div>
 
+  </div>
+
+
+  <!-- Bildirim Paneli Modal -->
+  <div id="notif-panel-overlay" class="modal-overlay hidden" onclick="if(event.target===this)closeNotifPanel()">
+    <div class="modal" style="max-width:480px">
+      <div class="modal-header">
+        <div class="modal-title">
+          <svg class="icon-small" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+          <span>Bildirim Ayarları</span>
+        </div>
+        <button onclick="closeNotifPanel()" class="modal-close">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="modal-subtitle">Her namaz vaktinden 5 dakika önce bildirim alın</div>
+      <div class="modal-content" style="padding:1rem">
+        <div id="notif-toggles" class="notif-toggles"></div>
+      </div>
+    </div>
   </div>
 
   <!-- Modal -->

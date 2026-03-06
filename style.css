@@ -222,3 +222,7 @@ h1,h2,h3,h4,h5,h6{ font-family:"Outfit",sans-serif; }
 /* Animations */
 @keyframes fadeInUp{ from{ opacity:0; transform:translateY(20px); } to{ opacity:1; transform:translateY(0); } }
 .animate-fade-in{ animation:fadeInUp 0.6s ease-out forwards; }
+
+/* Özel günler */
+.schedule-table tr.kadir { background-color: rgba(45,212,191,0.08); }
+.schedule-table tr.bayram-row { background-color: rgba(45,212,191,0.15); }
