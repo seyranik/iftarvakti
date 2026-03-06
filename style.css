@@ -41,7 +41,7 @@ h1,h2,h3,h4,h5,h6{ font-family:"Outfit",sans-serif; }
 .hidden{ display:none!important; }
 
 /* Container */
-.container{ max-width:1024px; margin:0 auto; padding:1.5rem 1rem 2rem; }
+.container{ max-width:1024px; margin:0 auto; padding:2rem 1rem; }
 .has-ramadan .container{ padding-top:0; }
 
 /* Ramadan Progress */
@@ -52,16 +52,15 @@ h1,h2,h3,h4,h5,h6{ font-family:"Outfit",sans-serif; }
 .progress-text span{ font-size:0.875rem; font-weight:500; color:var(--accent); }
 
 
-.city-selector{ display:flex; align-items:center; gap:0.5rem; flex:1; min-width:0; overflow:hidden; }
-.city-selector .icon-small{ width:20px; height:20px; color:var(--accent); opacity:0.7; flex-shrink:0; }
+.city-selector{ display:flex; align-items:center; gap:0.5rem; }
+.city-selector .icon-small{ width:20px; height:20px; color:var(--accent); opacity:0.7; }
 .city-selector select{
-  font-family:"Outfit",sans-serif; font-size:1.25rem; font-weight:300;
+  font-family:"Outfit",sans-serif; font-size:1.5rem; font-weight:300;
   background:transparent; border:none; color:var(--text-primary); cursor:pointer;
-  padding:0.25rem 1.75rem 0.25rem 0; outline:none;
+  padding:0.25rem 2rem 0.25rem 0; outline:none;
   -webkit-appearance:none; appearance:none;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%231a9f8a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
   background-repeat:no-repeat; background-position:right center;
-  min-width:0; max-width:100%;
 }
 .theme-toggle{
   width:44px; height:44px; border-radius:50%; border:none;
