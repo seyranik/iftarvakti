@@ -97,37 +97,69 @@ function tryGeoLocation() {
     fetchPrayerTimes();
     return;
   }
+  // Önce vakitleri Erzincan ile yükle, arka planda konum al
+  fetchPrayerTimes();
   navigator.geolocation.getCurrentPosition(
     pos => {
       const { latitude, longitude } = pos.coords;
       const nearest = findNearestCity(latitude, longitude);
-      if (nearest && nearest !== currentCity) {
+      if (nearest && nearest !== currentCity && CITY_NAMES[nearest]) {
         currentCity = nearest;
         $('city-select').value = currentCity;
         localStorage.setItem('prayer-city', currentCity);
+        fetchPrayerTimes(); // Doğru şehirle tekrar yükle
       }
-      fetchPrayerTimes();
     },
-    () => {
-      // Reddedildi veya hata — Erzincan ile devam
-      fetchPrayerTimes();
-    },
-    { timeout: 5000, maximumAge: 3600000 }
+    () => { /* reddedildi, Erzincan ile devam */ },
+    { timeout: 8000, maximumAge: 3600000 }
   );
 }
 
 // Yakın şehri bul (kaba koordinat eşleştirme)
 const CITY_COORDS = {
-  '9146': [37.00, 35.32], '9158': [37.75, 38.27], '9168': [38.75, 30.54],
-  '9178': [39.72, 43.05], '9206': [39.92, 32.85], '9225': [36.90, 30.69],
-  '9335': [40.18, 29.06], '9377': [37.77, 29.08], '9397': [37.91, 40.22],
-  '9440': [39.75, 39.49], '9450': [39.90, 41.27], '9470': [39.77, 30.52],
-  '9479': [37.07, 37.38], '9516': [36.20, 36.16], '9541': [41.01, 28.96],
-  '9560': [38.42, 27.14], '9620': [38.73, 35.49], '9655': [40.76, 29.94],
-  '9676': [37.87, 32.49], '9703': [38.35, 38.31], '9713': [38.61, 27.42],
-  '9737': [37.31, 40.73], '9819': [41.28, 36.33], '9844': [39.74, 37.01],
-  '9901': [41.00, 39.72], '9921': [37.15, 38.79], '9929': [38.49, 43.38],
-  '9947': [41.45, 31.79], '9954': [38.37, 34.02], '9967': [37.18, 33.22],
+  '9146': [37.00, 35.32],  // Adana
+  '9158': [37.75, 38.27],  // Adıyaman
+  '9185': [39.72, 43.05],  // Ağrı
+  '9206': [39.92, 32.85],  // Ankara
+  '9225': [36.90, 30.69],  // Antalya
+  '9246': [41.18, 41.82],  // Artvin
+  '9270': [39.64, 27.88],  // Balıkesir
+  '9295': [40.26, 40.23],  // Bayburt
+  '9303': [38.88, 40.50],  // Bingöl
+  '9311': [38.40, 42.12],  // Bitlis
+  '9315': [40.74, 31.61],  // Bolu
+  '9335': [40.18, 29.06],  // Bursa
+  '9352': [40.15, 26.41],  // Çanakkale
+  '9392': [37.77, 29.08],  // Denizli
+  '9402': [37.91, 40.22],  // Diyarbakır
+  '9419': [41.68, 26.56],  // Edirne
+  '9432': [38.68, 39.23],  // Elazığ
+  '9440': [39.75, 39.49],  // Erzincan
+  '9451': [39.90, 41.27],  // Erzurum
+  '9470': [39.77, 30.52],  // Eskişehir
+  '9479': [37.07, 37.38],  // Gaziantep
+  '9494': [40.91, 38.39],  // Giresun
+  '9507': [37.57, 43.74],  // Hakkari
+  '20089':[36.20, 36.16],  // Hatay
+  '9541': [41.01, 28.96],  // İstanbul
+  '9560': [38.42, 27.14],  // İzmir
+  '9577': [37.58, 36.94],  // Kahramanmaraş
+  '9594': [40.60, 43.09],  // Kars
+  '9620': [38.73, 35.49],  // Kayseri
+  '9654': [40.76, 29.94],  // Kocaeli
+  '9676': [37.87, 32.49],  // Konya
+  '9703': [38.35, 38.31],  // Malatya
+  '9716': [38.61, 27.42],  // Manisa
+  '9726': [37.31, 40.73],  // Mardin
+  '9737': [36.81, 34.63],  // Mersin
+  '9747': [37.21, 28.36],  // Muğla
+  '9819': [41.28, 36.33],  // Samsun
+  '9831': [37.15, 38.79],  // Şanlıurfa
+  '9868': [39.74, 37.01],  // Sivas
+  '9879': [41.00, 27.51],  // Tekirdağ
+  '9905': [41.00, 39.72],  // Trabzon
+  '9930': [38.49, 43.38],  // Van
+  '9955': [41.45, 31.79],  // Zonguldak
 };
 
 function findNearestCity(lat, lon) {
