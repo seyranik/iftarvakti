@@ -19,14 +19,13 @@
 </head>
 <body class="dark">
 
-  <!-- SABİT ÜST BÖLÜM -->
-  <div id="top-bar">
-    <!-- Ramazan progress -->
-    <div id="ramadan-progress" class="ramadan-progress hidden">
-      <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
-      <div class="progress-text"><span id="ramadan-day-text"></span></div>
-    </div>
-    <!-- Header -->
+  <div id="ramadan-progress" class="ramadan-progress hidden">
+    <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+    <div class="progress-text"><span id="ramadan-day-text"></span></div>
+  </div>
+
+  <div class="container">
+
     <div class="header">
       <div class="city-selector">
         <svg class="icon-small" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -41,12 +40,7 @@
         </button>
       </div>
     </div>
-  </div><!-- /#top-bar -->
 
-  <!-- SAYFA İÇERİĞİ -->
-  <div class="container">
-
-    <!-- Geri sayım -->
     <div class="countdown-section">
       <div id="loading" class="loading">
         <div class="spinner"></div>
@@ -55,20 +49,11 @@
       <div id="countdown-content" class="countdown-content hidden">
         <div class="countdown-label" id="countdown-label">İFTARA KALAN SÜRE</div>
         <div class="countdown-timer">
-          <div class="countdown-unit">
-            <div class="countdown-digit" id="hours">00</div>
-            <div class="countdown-unit-label">SAAT</div>
-          </div>
+          <div class="countdown-unit"><div class="countdown-digit" id="hours">00</div><div class="countdown-unit-label">SAAT</div></div>
           <div class="countdown-separator">:</div>
-          <div class="countdown-unit">
-            <div class="countdown-digit" id="minutes">00</div>
-            <div class="countdown-unit-label">DAKİKA</div>
-          </div>
+          <div class="countdown-unit"><div class="countdown-digit" id="minutes">00</div><div class="countdown-unit-label">DAKİKA</div></div>
           <div class="countdown-separator">:</div>
-          <div class="countdown-unit">
-            <div class="countdown-digit" id="seconds">00</div>
-            <div class="countdown-unit-label">SANİYE</div>
-          </div>
+          <div class="countdown-unit"><div class="countdown-digit" id="seconds">00</div><div class="countdown-unit-label">SANİYE</div></div>
         </div>
         <div class="iftar-time">
           <div class="iftar-label" id="next-prayer-label">İftar Vakti</div>
@@ -79,28 +64,17 @@
         <div class="iftar-message" id="iftar-message">Hayırlı İftarlar 🌙</div>
         <div class="iftar-submessage" id="iftar-submessage">Bir sonraki namaz vaktine kalan süre</div>
         <div class="countdown-timer" style="margin-top:1rem">
-          <div class="countdown-unit">
-            <div class="countdown-digit" id="hours2">00</div>
-            <div class="countdown-unit-label">SAAT</div>
-          </div>
+          <div class="countdown-unit"><div class="countdown-digit" id="hours2">00</div><div class="countdown-unit-label">SAAT</div></div>
           <div class="countdown-separator">:</div>
-          <div class="countdown-unit">
-            <div class="countdown-digit" id="minutes2">00</div>
-            <div class="countdown-unit-label">DAKİKA</div>
-          </div>
+          <div class="countdown-unit"><div class="countdown-digit" id="minutes2">00</div><div class="countdown-unit-label">DAKİKA</div></div>
           <div class="countdown-separator">:</div>
-          <div class="countdown-unit">
-            <div class="countdown-digit" id="seconds2">00</div>
-            <div class="countdown-unit-label">SANİYE</div>
-          </div>
+          <div class="countdown-unit"><div class="countdown-digit" id="seconds2">00</div><div class="countdown-unit-label">SANİYE</div></div>
         </div>
       </div>
     </div>
 
-    <!-- Namaz kartları -->
     <div class="prayer-grid" id="prayer-grid"></div>
 
-    <!-- Takvim butonu -->
     <div class="schedule-section">
       <button id="schedule-btn" class="schedule-btn">
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
@@ -108,7 +82,6 @@
       </button>
     </div>
 
-    <!-- Footer -->
     <div class="footer">
       <p>Vakitler <strong>Diyanet İşleri Başkanlığı</strong> verilerine dayanmaktadır.</p>
       <p>Saatler coğrafi konuma göre <strong>1-2 dakika farklılık</strong> gösterebilir. Ezanın okunmasını esas alınız.</p>
@@ -116,9 +89,8 @@
       <p class="developer-credit">© 2026 <a href="https://github.com/seyranik" target="_blank" rel="noopener">Seyrani Kenger</a> — Namaz Vakti PWA</p>
     </div>
 
-  </div><!-- /.container -->
+  </div>
 
-  <!-- Bildirim Paneli Modal -->
   <div id="notif-panel-overlay" class="modal-overlay hidden">
     <div class="modal" style="max-width:480px">
       <div class="modal-header">
@@ -137,7 +109,6 @@
     </div>
   </div>
 
-  <!-- Takvim Modal -->
   <div id="modal-overlay" class="modal-overlay hidden">
     <div class="modal">
       <div class="modal-header">
@@ -152,25 +123,17 @@
       <div class="modal-subtitle" id="modal-subtitle"></div>
       <div class="modal-content">
         <table class="schedule-table">
-          <thead>
-            <tr>
-              <th class="col-day">#</th>
-              <th class="col-date">Tarih</th>
-              <th>İmsak</th>
-              <th>Güneş</th>
-              <th>Öğle</th>
-              <th>İkindi</th>
-              <th class="col-aksam">Akşam</th>
-              <th>Yatsı</th>
-            </tr>
-          </thead>
+          <thead><tr>
+            <th class="col-day">#</th><th class="col-date">Tarih</th>
+            <th>İmsak</th><th>Güneş</th><th>Öğle</th>
+            <th>İkindi</th><th class="col-aksam">Akşam</th><th>Yatsı</th>
+          </tr></thead>
           <tbody id="schedule-body"></tbody>
         </table>
       </div>
     </div>
   </div>
 
-  <!-- Bildirim izni banner -->
   <div id="notif-bar" class="notif-bar hidden">
     <span class="notif-bar-txt">🔔 Namaz vakti bildirimleri için izin verin</span>
     <button id="notif-bar-btn" class="notif-bar-btn">İzin Ver</button>
