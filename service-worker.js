@@ -1,4 +1,4 @@
-const CACHE = 'namazvakti-v19';
+const CACHE = 'namazvakti-v20';
 const ASSETS = ['/iftarvakti/', '/iftarvakti/index.html', '/iftarvakti/style.css', '/iftarvakti/script.js', '/iftarvakti/manifest.json'];
 
 self.addEventListener('install', e => {

@@ -724,6 +724,19 @@ function handleOrientation(e) {
   document.getElementById('qibla-arrow-wrap').style.transform = `rotate(${arrow}deg)`;
   document.getElementById('compass-rose').style.transform = `rotate(${-heading}deg)`;
   document.getElementById('qibla-degree').textContent = `${Math.round(qiblaAngle)}°`;
+
+  // Ok Kıble'ye yakınsa etiketi göster
+  const diff = Math.abs(((arrow % 360) + 360) % 360);
+  const onTarget = diff < 10 || diff > 350;
+  document.getElementById('qibla-label-tip').classList.toggle('visible', onTarget);
+  const foundEl = document.getElementById('qibla-found');
+  if (onTarget) {
+    foundEl.textContent = '✅ Kıble yönünü buldunuz!';
+    foundEl.classList.add('visible');
+  } else {
+    foundEl.classList.remove('visible');
+    foundEl.textContent = '';
+  }
 }
 
 function showQiblaError() {
