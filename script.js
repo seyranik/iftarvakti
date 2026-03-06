@@ -11,34 +11,34 @@ const VAPID_PUBLIC = 'BA2clnoFfnQUC2XzuAHaZtlAgVnV3LWtFVEcmfYfR6WDsbeOcaH_W15gHo
 
 // 81 il — ezanvakti.emushaf.net il merkezi kodları
 const CITY_NAMES = {
-  '9146': 'Adana',       '9158': 'Adıyaman',    '9168': 'Afyonkarahisar',
-  '9954': 'Aksaray',     '9186': 'Amasya',       '9206': 'Ankara',
-  '9225': 'Antalya',     '9994': 'Ardahan',      '9248': 'Artvin',
-  '9258': 'Aydın',       '9178': 'Ağrı',         '9268': 'Balıkesir',
-  '9990': 'Bartın',      '9979': 'Batman',        '9961': 'Bayburt',
-  '9278': 'Bilecik',     '9288': 'Bingöl',        '9296': 'Bitlis',
-  '9305': 'Bolu',        '9315': 'Burdur',        '9335': 'Bursa',
-  '9347': 'Çanakkale',   '9358': 'Çankırı',       '9367': 'Çorum',
-  '9377': 'Denizli',     '9381': 'Diyarbakır',    '17288': 'Düzce',
-  '9390': 'Edirne',      '9399': 'Elazığ',        '9440': 'Erzincan',
-  '9450': 'Erzurum',     '9470': 'Eskişehir',     '9479': 'Gaziantep',
-  '9490': 'Giresun',     '9499': 'Gümüşhane',     '9507': 'Hakkari',
-  '9516': 'Hatay',       '9998': 'Iğdır',         '9530': 'Isparta',
-  '9541': 'İstanbul',    '9560': 'İzmir',         '9723': 'Kahramanmaraş',
-  '17276': 'Karabük',    '9967': 'Karaman',       '9573': 'Kars',
-  '9581': 'Kastamonu',   '9620': 'Kayseri',       '17280': 'Kilis',
-  '9655': 'Kocaeli',     '9676': 'Konya',         '9688': 'Kütahya',
-  '9635': 'Kırklareli',  '9973': 'Kırıkkale',     '9644': 'Kırşehir',
-  '9703': 'Malatya',     '9713': 'Manisa',        '9737': 'Mardin',
-  '9737': 'Mersin',      '9748': 'Muğla',         '9756': 'Muş',
-  '9765': 'Nevşehir',    '9774': 'Niğde',         '9784': 'Ordu',
-  '17284': 'Osmaniye',   '9793': 'Rize',          '9819': 'Samsun',
-  '9829': 'Siirt',       '9836': 'Sinop',         '9844': 'Sivas',
-  '9921': 'Şanlıurfa',   '9985': 'Şırnak',        '9854': 'Tekirdağ',
-  '9863': 'Tokat',       '9901': 'Trabzon',       '9911': 'Tunceli',
-  '9929': 'Van',         '17264': 'Yalova',       '9938': 'Yozgat',
-  '9947': 'Zonguldak',
-};
+  '500': 'Adana',          '501': 'Adıyaman',       '502': 'Afyonkarahisar',
+  '503': 'Ağrı',           '504': 'Aksaray',         '505': 'Amasya',
+  '506': 'Ankara',         '507': 'Antalya',         '508': 'Ardahan',
+  '509': 'Artvin',         '510': 'Aydın',           '511': 'Balıkesir',
+  '512': 'Bartın',         '513': 'Batman',          '514': 'Bayburt',
+  '515': 'Bilecik',        '516': 'Bingöl',          '517': 'Bitlis',
+  '518': 'Bolu',           '519': 'Burdur',          '520': 'Bursa',
+  '521': 'Çanakkale',      '522': 'Çankırı',         '523': 'Çorum',
+  '524': 'Denizli',        '525': 'Diyarbakır',      '526': 'Düzce',
+  '527': 'Edirne',         '528': 'Elazığ',          '529': 'Erzincan',
+  '530': 'Erzurum',        '531': 'Eskişehir',       '532': 'Gaziantep',
+  '533': 'Giresun',        '534': 'Gümüşhane',       '535': 'Hakkari',
+  '536': 'Hatay',          '537': 'Iğdır',           '538': 'Isparta',
+  '539': 'İstanbul',       '540': 'İzmir',           '541': 'Kahramanmaraş',
+  '542': 'Karabük',        '543': 'Karaman',         '544': 'Kars',
+  '545': 'Kastamonu',      '546': 'Kayseri',         '547': 'Kilis',
+  '548': 'Kırıkkale',      '549': 'Kırklareli',      '550': 'Kırşehir',
+  '551': 'Kocaeli',        '552': 'Konya',           '553': 'Kütahya',
+  '554': 'Malatya',        '555': 'Manisa',          '556': 'Mardin',
+  '557': 'Mersin',         '558': 'Muğla',           '559': 'Muş',
+  '560': 'Nevşehir',       '561': 'Niğde',           '562': 'Ordu',
+  '563': 'Osmaniye',       '564': 'Rize',            '565': 'Sakarya',
+  '566': 'Samsun',         '567': 'Şanlıurfa',       '568': 'Siirt',
+  '569': 'Sinop',          '570': 'Şırnak',          '571': 'Sivas',
+  '572': 'Tekirdağ',       '573': 'Tokat',           '574': 'Trabzon',
+  '575': 'Tunceli',        '576': 'Uşak',            '577': 'Van',
+  '578': 'Yalova',         '579': 'Yozgat',          '580': 'Zonguldak',
+}
 
 const PRAYER_NAMES = {
   Imsak:'İmsak', Gunes:'Güneş', Ogle:'Öğle',
@@ -65,7 +65,7 @@ const RAMADAN = {
 };
 
 // ── State ─────────────────────────────────────────────
-let currentCity       = '9440'; // Erzincan
+let currentCity       = '529'; // Erzincan
 let prayerTimes       = null;
 let monthlyData       = [];
 let countdownInterval = null;
