@@ -6,6 +6,7 @@
   <meta name="theme-color" content="#1a9f8a"/>
   <meta name="description" content="Namaz vakitleri ve iftar geri sayımı. Vakitten 5 dakika önce bildirim alın."/>
   <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="mobile-web-app-capable" content="yes"/>
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
   <meta name="apple-mobile-web-app-title" content="Namaz Vakti"/>
   <link rel="apple-touch-icon" href="./icons/icon-192x192.png"/>
@@ -34,6 +35,9 @@
       </div>
       <div style="display:flex;gap:8px;align-items:center">
 
+        <button id="notif-btn" class="theme-toggle" title="Bildirimler" style="display:none">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+        </button>
         <button id="theme-toggle" class="theme-toggle">
           <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
         </button>
