@@ -586,10 +586,15 @@ function renderSchedule(ramadanOnly = false) {
   const todayStr = getTodayStr();
   let data = monthlyData;
   if (ramadanOnly) {
-    // Sadece ramazan günlerini göster (19 Şubat - 19 Mart)
+    // Ramazan günleri + Bayram 1. günü
     data = monthlyData.filter(d => {
       const dt = parseTableDate(d.MiladiTarihKisa);
-      return dt && isRamadan(dt);
+      if (!dt) return false;
+      if (isRamadan(dt)) return true;
+      // Bayram 1. günü de ekle
+      const b = new Date(RAMADAN.bayram1); b.setHours(0,0,0,0);
+      const dt2 = new Date(dt); dt2.setHours(0,0,0,0);
+      return dt2.getTime() === b.getTime();
     });
   }
   $('schedule-body').innerHTML = data.map((day, i) => {
@@ -602,7 +607,7 @@ function renderSchedule(ramadanOnly = false) {
     let badge = '';
     if (isKadir)   badge = ' <span style="font-size:0.7rem;color:var(--accent)">Kadir Gecesi 🌙</span>';
     if (isArefeD)  badge = ' <span style="font-size:0.7rem;color:var(--accent)">Arefe</span>';
-    if (isBayramD) badge = ' <span style="font-size:0.7rem;color:var(--accent)">Bayram 🎉</span>';
+    if (isBayramD) badge = ' <span style="font-size:0.7rem;color:var(--accent)">Ramazan Bayramı 🎉</span>';
     return `
       <tr class="${rowClass}">
         <td class="col-day">${i+1}</td>
