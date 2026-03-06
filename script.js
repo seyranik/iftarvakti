@@ -654,3 +654,92 @@ function parseTableDate(str) {
   const [d, m, y] = str.split('.').map(Number);
   return new Date(y, m-1, d);
 }
+
+// ── Sayfa Yönetimi ─────────────────────────────────────
+function showPage(name) {
+  const mainContainer = document.querySelector('.container');
+  const qiblaPage = document.getElementById('qibla-page');
+
+  // Tüm sayfaları gizle
+  mainContainer.style.display = 'none';
+  qiblaPage.classList.remove('active');
+
+  // İlgili sayfayı göster
+  if (name === 'home') {
+    mainContainer.style.display = '';
+  } else if (name === 'qibla') {
+    qiblaPage.classList.add('active');
+    document.getElementById('qibla-city-label').textContent = `${CITY_NAMES[currentCity]} için Kıble Yönü`;
+  } else if (name === 'takvim') {
+    mainContainer.style.display = '';
+    openModal(); // Mevcut takvim modalını aç
+  } else if (name === 'bildirim') {
+    mainContainer.style.display = '';
+    toggleNotifPanel(); // Mevcut bildirim panelini aç
+  } else {
+    mainContainer.style.display = ''; // diğerleri şimdilik anasayfa
+  }
+
+  // Nav aktif durumu
+  document.querySelectorAll('.bottom-nav-item').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.page === name);
+  });
+}
+
+// ── Kıble Pusulası ─────────────────────────────────────
+let qiblaAngle = 0;
+
+function calcQiblaAngle(lat, lon) {
+  const kLat = 21.4225 * Math.PI / 180;
+  const kLon = 39.8262 * Math.PI / 180;
+  const uLat = lat * Math.PI / 180;
+  const dLon = kLon - lon * Math.PI / 180;
+  const y = Math.sin(dLon) * Math.cos(kLat);
+  const x = Math.cos(uLat) * Math.sin(kLat) - Math.sin(uLat) * Math.cos(kLat) * Math.cos(dLon);
+  return ((Math.atan2(y, x) * 180 / Math.PI) + 360) % 360;
+}
+
+async function startQibla() {
+  // iOS izin
+  if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
+    try {
+      const p = await DeviceOrientationEvent.requestPermission();
+      if (p !== 'granted') { showQiblaError(); return; }
+    } catch(e) { showQiblaError(); return; }
+  }
+  if (!navigator.geolocation) { showQiblaError(); return; }
+  navigator.geolocation.getCurrentPosition(pos => {
+    qiblaAngle = calcQiblaAngle(pos.coords.latitude, pos.coords.longitude);
+    document.getElementById('qibla-permission').classList.add('hidden');
+    document.getElementById('qibla-compass').classList.remove('hidden');
+    window.addEventListener('deviceorientationabsolute', handleOrientation, true);
+    window.addEventListener('deviceorientation', handleOrientation, true);
+  }, showQiblaError, { timeout: 8000 });
+}
+
+function handleOrientation(e) {
+  let heading = e.webkitCompassHeading ?? (e.absolute && e.alpha !== null ? 360 - e.alpha : null);
+  if (heading === null) return;
+  const arrow = qiblaAngle - heading;
+  document.getElementById('qibla-arrow-wrap').style.transform = `rotate(${arrow}deg)`;
+  document.getElementById('compass-rose').style.transform = `rotate(${-heading}deg)`;
+  document.getElementById('qibla-degree').textContent = `${Math.round(qiblaAngle)}°`;
+}
+
+function showQiblaError() {
+  document.getElementById('qibla-permission').classList.add('hidden');
+  document.getElementById('qibla-compass').classList.add('hidden');
+  document.getElementById('qibla-error').classList.remove('hidden');
+}
+
+// ── Bottom Nav Event Listeners ─────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.bottom-nav-item').forEach(btn => {
+    btn.addEventListener('click', () => showPage(btn.dataset.page));
+  });
+  document.getElementById('qibla-start-btn').addEventListener('click', startQibla);
+  document.getElementById('qibla-retry-btn').addEventListener('click', () => {
+    document.getElementById('qibla-error').classList.add('hidden');
+    document.getElementById('qibla-permission').classList.remove('hidden');
+  });
+});

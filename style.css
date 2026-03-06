@@ -237,3 +237,93 @@ h1,h2,h3,h4,h5,h6{ font-family:"Outfit",sans-serif; }
 /* Özel günler */
 .schedule-table tr.kadir { background-color: rgba(45,212,191,0.08); }
 .schedule-table tr.bayram-row { background-color: rgba(45,212,191,0.15); }
+
+/* ── Bottom Nav ──────────────────────────────────────── */
+.bottom-nav{
+  position:fixed; bottom:0; left:0; right:0; z-index:150;
+  background:var(--bg-card);
+  border-top:1px solid var(--border);
+  display:flex; align-items:stretch;
+  height:64px;
+  padding-bottom:env(safe-area-inset-bottom);
+}
+.bottom-nav-item{
+  flex:1; display:flex; flex-direction:column;
+  align-items:center; justify-content:center; gap:4px;
+  background:none; border:none; cursor:pointer;
+  color:var(--text-secondary);
+  font-family:"DM Sans",sans-serif; font-size:0.65rem;
+  transition:color 0.15s;
+  -webkit-tap-highlight-color:transparent;
+}
+.bottom-nav-item.active{ color:var(--accent); }
+.bottom-nav-item svg{ width:22px; height:22px; }
+
+/* container için alt padding (nav yüksekliği) */
+.container{ padding-bottom:80px !important; }
+
+/* ── Sayfa sistemi ───────────────────────────────────── */
+.page{ display:none; }
+.page.active{ display:block; }
+
+/* ── Kıble Pusulası ──────────────────────────────────── */
+.qibla-container{ max-width:480px; margin:0 auto; padding:1rem 1rem 2rem; }
+.qibla-section{ display:flex; flex-direction:column; align-items:center; padding-top:3rem; }
+.qibla-icon-wrap{ margin-bottom:1.5rem; opacity:0.85; }
+.qibla-perm-title{
+  font-family:"Outfit",sans-serif; font-size:1.4rem; font-weight:500;
+  margin-bottom:0.75rem; text-align:center;
+}
+.qibla-perm-desc{
+  font-size:0.9rem; color:var(--text-secondary);
+  text-align:center; line-height:1.6; max-width:280px; margin-bottom:2rem;
+}
+.qibla-btn{
+  background:var(--accent); color:#fff; border:none;
+  padding:0.75rem 2rem; border-radius:12px;
+  font-family:"Outfit",sans-serif; font-size:1rem; font-weight:500;
+  cursor:pointer; transition:opacity 0.15s;
+}
+.qibla-btn:hover{ opacity:0.85; }
+.qibla-city-label{
+  font-size:0.9rem; color:var(--text-secondary);
+  margin-bottom:2rem; text-align:center;
+}
+.compass-wrap{
+  position:relative; width:260px; height:260px;
+  margin:0 auto 1.5rem;
+}
+.compass-ring{
+  width:100%; height:100%; border-radius:50%;
+  border:2px solid var(--border);
+  background:var(--bg-card);
+  position:relative;
+  box-shadow:0 0 0 6px var(--bg-secondary), 0 8px 32px rgba(0,0,0,0.2);
+}
+.compass-rose{
+  position:absolute; inset:0;
+  transition:transform 0.1s ease-out;
+}
+.compass-n,.compass-s,.compass-e,.compass-w{
+  position:absolute; font-size:0.75rem; font-weight:700;
+  font-family:"Outfit",sans-serif;
+}
+.compass-n{ top:8px; left:50%; transform:translateX(-50%); color:var(--accent); }
+.compass-s{ bottom:8px; left:50%; transform:translateX(-50%); color:var(--text-secondary); }
+.compass-e{ right:10px; top:50%; transform:translateY(-50%); color:var(--text-secondary); }
+.compass-w{ left:10px; top:50%; transform:translateY(-50%); color:var(--text-secondary); }
+.qibla-arrow-wrap{
+  position:absolute; inset:0;
+  display:flex; align-items:center; justify-content:center;
+  transition:transform 0.1s ease-out;
+  pointer-events:none;
+}
+.qibla-arrow{ width:36px; height:110px; }
+.qibla-degree{
+  font-family:"Outfit",sans-serif; font-size:2rem; font-weight:300;
+  color:var(--accent); margin-bottom:0.5rem; text-align:center;
+}
+.qibla-hint{
+  font-size:0.8rem; color:var(--text-secondary);
+  text-align:center; max-width:240px; line-height:1.5;
+}
