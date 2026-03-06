@@ -93,10 +93,16 @@ document.addEventListener('DOMContentLoaded', () => {
   $('notif-btn').addEventListener('click', toggleNotifPanel);
   $('notif-bar-btn').addEventListener('click', requestNotifPermission);
   $('notif-bar-close').addEventListener('click', () => $('notif-bar').classList.add('hidden'));
+  $('notif-panel-close').addEventListener('click', closeNotifPanel);
+  $('notif-panel-overlay').addEventListener('click', e => { if (e.target === $('notif-panel-overlay')) closeNotifPanel(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal(); closeNotifPanel(); } });
 
-  // Konum izni iste — 800ms gecikmeyle (sayfa yüklendikten sonra)
-  setTimeout(tryGeoLocation, 800);
+  // Konum izni: sadece şehir manuel seçilmemişse sor
+  if (!localStorage.getItem('prayer-city-manual')) {
+    setTimeout(tryGeoLocation, 800);
+  } else {
+    fetchPrayerTimes();
+  }
 });
 
 // ── Coğrafi konum ─────────────────────────────────────
@@ -169,11 +175,13 @@ function buildCitySelect() {
 function initCity() {
   const saved = localStorage.getItem('prayer-city');
   if (saved && CITY_NAMES[saved]) currentCity = saved;
+  // Konum izni ile değiştirilmişse manual flag'i temizle
 }
 
 function changeCity(cityId) {
   currentCity = cityId;
   localStorage.setItem('prayer-city', cityId);
+  localStorage.setItem('prayer-city-manual', '1');
   fetchPrayerTimes();
 }
 
@@ -252,7 +260,8 @@ function updateRamadanProgress() {
   const pct = (day / RAMADAN.totalDays) * 100;
   $('progress-fill').style.width = pct + '%';
 
-  let text = `Ramazan'ın ${day}. günü`;
+  const pct2 = Math.round((day / RAMADAN.totalDays) * 100);
+  let text = `Ramazan'ın ${day}. günü · %${pct2}`;
   if (isKadirGecesi()) {
     text += ` · 🌙 Kadir Gecesi`;
   } else if (isArefe()) {
@@ -451,9 +460,9 @@ function renderNotifToggles() {
       </label>
     </div>
   `).join('');
-  $('notif-btn').style.display = 'flex';
   const anyActive = Object.values(notifPrefs).some(v => v);
-  $('notif-btn').style.color = anyActive ? 'var(--accent)' : '';
+  const nb = $('notif-btn');
+  if (nb) nb.style.color = anyActive ? 'var(--accent)' : '';
 }
 
 // ── Bildirim paneli (modal) ────────────────────────────
@@ -558,11 +567,12 @@ function openModal() {
   if (isRamadan()) {
     $('modal-title-text').textContent = `${city} — Ramazan İmsakiyesi 2026`;
     $('modal-subtitle').textContent   = '19 Şubat - 19 Mart 2026 · 29 gün · Kadir Gecesi: 16 Mart';
+    renderSchedule(true); // sadece ramazan günlerini göster
   } else {
     $('modal-title-text').textContent = `${city} — ${now.toLocaleString('tr-TR',{month:'long',year:'numeric'})}`;
     $('modal-subtitle').textContent   = `${monthlyData.length} günlük namaz vakitleri`;
+    renderSchedule(false);
   }
-  renderSchedule();
   $('modal-overlay').classList.remove('hidden');
   document.body.style.overflow = 'hidden';
 }
@@ -572,9 +582,17 @@ function closeModal() {
   document.body.style.overflow = '';
 }
 
-function renderSchedule() {
+function renderSchedule(ramadanOnly = false) {
   const todayStr = getTodayStr();
-  $('schedule-body').innerHTML = monthlyData.map((day, i) => {
+  let data = monthlyData;
+  if (ramadanOnly) {
+    // Sadece ramazan günlerini göster (19 Şubat - 19 Mart)
+    data = monthlyData.filter(d => {
+      const dt = parseTableDate(d.MiladiTarihKisa);
+      return dt && isRamadan(dt);
+    });
+  }
+  $('schedule-body').innerHTML = data.map((day, i) => {
     const isToday   = day.MiladiTarihKisa === todayStr;
     const dateObj   = parseTableDate(day.MiladiTarihKisa);
     const isKadir   = dateObj && isKadirGecesi(dateObj);
