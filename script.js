@@ -11,48 +11,34 @@ const VAPID_PUBLIC = 'BA2clnoFfnQUC2XzuAHaZtlAgVnV3LWtFVEcmfYfR6WDsbeOcaH_W15gHo
 
 // 81 il — ezanvakti.emushaf.net il merkezi kodları
 const CITY_NAMES = {
-  '500': 'Adana',          '501': 'Adıyaman',       '502': 'Afyonkarahisar',
-  '503': 'Ağrı',           '504': 'Aksaray',         '505': 'Amasya',
-  '506': 'Ankara',         '507': 'Antalya',         '508': 'Ardahan',
-  '509': 'Artvin',         '510': 'Aydın',           '511': 'Balıkesir',
-  '512': 'Bartın',         '513': 'Batman',          '514': 'Bayburt',
-  '515': 'Bilecik',        '516': 'Bingöl',          '517': 'Bitlis',
-  '518': 'Bolu',           '519': 'Burdur',          '520': 'Bursa',
-  '521': 'Çanakkale',      '522': 'Çankırı',         '523': 'Çorum',
-  '524': 'Denizli',        '525': 'Diyarbakır',      '526': 'Düzce',
-  '527': 'Edirne',         '528': 'Elazığ',          '529': 'Erzincan',
-  '530': 'Erzurum',        '531': 'Eskişehir',       '532': 'Gaziantep',
-  '533': 'Giresun',        '534': 'Gümüşhane',       '535': 'Hakkari',
-  '536': 'Hatay',          '537': 'Iğdır',           '538': 'Isparta',
-  '539': 'İstanbul',       '540': 'İzmir',           '541': 'Kahramanmaraş',
-  '542': 'Karabük',        '543': 'Karaman',         '544': 'Kars',
-  '545': 'Kastamonu',      '546': 'Kayseri',         '547': 'Kilis',
-  '548': 'Kırıkkale',      '549': 'Kırklareli',      '550': 'Kırşehir',
-  '551': 'Kocaeli',        '552': 'Konya',           '553': 'Kütahya',
-  '554': 'Malatya',        '555': 'Manisa',          '556': 'Mardin',
-  '557': 'Mersin',         '558': 'Muğla',           '559': 'Muş',
-  '560': 'Nevşehir',       '561': 'Niğde',           '562': 'Ordu',
-  '563': 'Osmaniye',       '564': 'Rize',            '565': 'Sakarya',
-  '566': 'Samsun',         '567': 'Şanlıurfa',       '568': 'Siirt',
-  '569': 'Sinop',          '570': 'Şırnak',          '571': 'Sivas',
-  '572': 'Tekirdağ',       '573': 'Tokat',           '574': 'Trabzon',
-  '575': 'Tunceli',        '576': 'Uşak',            '577': 'Van',
-  '578': 'Yalova',         '579': 'Yozgat',          '580': 'Zonguldak',
+  '9146': 'Adana',         '9158': 'Adıyaman',      '9167': 'Afyonkarahisar',
+  '9185': 'Ağrı',          '9193': 'Aksaray',        '9198': 'Amasya',
+  '9206': 'Ankara',        '9225': 'Antalya',        '9238': 'Ardahan',
+  '9246': 'Artvin',        '9252': 'Aydın',          '9270': 'Balıkesir',
+  '9285': 'Bartın',        '9288': 'Batman',         '9295': 'Bayburt',
+  '9297': 'Bilecik',       '9303': 'Bingöl',         '9311': 'Bitlis',
+  '9315': 'Bolu',          '9327': 'Burdur',         '9335': 'Bursa',
+  '9352': 'Çanakkale',     '9359': 'Çankırı',        '9370': 'Çorum',
+  '9392': 'Denizli',       '9402': 'Diyarbakır',     '9414': 'Düzce',
+  '9419': 'Edirne',        '9432': 'Elazığ',         '9440': 'Erzincan',
+  '9451': 'Erzurum',       '9470': 'Eskişehir',      '9479': 'Gaziantep',
+  '9494': 'Giresun',       '9501': 'Gümüşhane',      '9507': 'Hakkari',
+  '20089': 'Hatay',        '9522': 'Iğdır',          '9528': 'Isparta',
+  '9541': 'İstanbul',      '9560': 'İzmir',          '9577': 'Kahramanmaraş',
+  '9581': 'Karabük',       '9587': 'Karaman',        '9594': 'Kars',
+  '9609': 'Kastamonu',     '9620': 'Kayseri',        '9629': 'Kilis',
+  '9635': 'Kırıkkale',     '9638': 'Kırklareli',     '9646': 'Kırşehir',
+  '9654': 'Kocaeli',       '9676': 'Konya',          '9689': 'Kütahya',
+  '9703': 'Malatya',       '9716': 'Manisa',         '9726': 'Mardin',
+  '9737': 'Mersin',        '9747': 'Muğla',          '9755': 'Muş',
+  '9760': 'Nevşehir',      '9766': 'Niğde',          '9782': 'Ordu',
+  '9788': 'Osmaniye',      '9799': 'Rize',           '9807': 'Sakarya',
+  '9819': 'Samsun',        '9831': 'Şanlıurfa',      '9839': 'Siirt',
+  '9847': 'Sinop',         '9854': 'Şırnak',         '9868': 'Sivas',
+  '9879': 'Tekirdağ',      '9887': 'Tokat',          '9905': 'Trabzon',
+  '9914': 'Tunceli',       '9919': 'Uşak',           '9930': 'Van',
+  '9935': 'Yalova',        '9949': 'Yozgat',         '9955': 'Zonguldak',
 }
-
-const PRAYER_NAMES = {
-  Imsak:'İmsak', Gunes:'Güneş', Ogle:'Öğle',
-  Ikindi:'İkindi', Aksam:'Akşam', Yatsi:'Yatsı'
-};
-
-const PRAYER_ICONS = {
-  Imsak:  `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>`,
-  Gunes:  `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>`,
-  Ogle:   `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>`,
-  Ikindi: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>`,
-  Aksam:  `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>`,
-  Yatsi:  `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>`,
-};
 
 // Ramazan 2026 — Diyanet resmi takvimi
 const RAMADAN = {
@@ -65,7 +51,7 @@ const RAMADAN = {
 };
 
 // ── State ─────────────────────────────────────────────
-let currentCity       = '529'; // Erzincan
+let currentCity       = '9440'; // Erzincan
 let prayerTimes       = null;
 let monthlyData       = [];
 let countdownInterval = null;
@@ -132,23 +118,16 @@ function tryGeoLocation() {
 
 // Yakın şehri bul (kaba koordinat eşleştirme)
 const CITY_COORDS = {
-  '9440': [39.75, 39.49], // Erzincan
-  '9206': [39.92, 32.85], // Ankara
-  '9541': [41.01, 28.96], // İstanbul
-  '9560': [38.42, 27.14], // İzmir
-  '9225': [36.90, 30.69], // Antalya
-  '9335': [40.18, 29.06], // Bursa
-  '9146': [37.00, 35.32], // Adana
-  '9479': [37.07, 37.38], // Gaziantep
-  '9620': [38.73, 35.49], // Kayseri
-  '9703': [38.35, 38.31], // Malatya
-  '9450': [39.90, 41.27], // Erzurum
-  '9819': [41.28, 36.33], // Samsun
-  '9901': [41.00, 39.72], // Trabzon
-  '9541': [41.01, 28.96], // İstanbul
-  '9676': [37.87, 32.49], // Konya
-  '9381': [37.91, 40.22], // Diyarbakır
-  '9929': [38.49, 43.38], // Van
+  '9146': [37.00, 35.32], '9158': [37.75, 38.27], '9168': [38.75, 30.54],
+  '9178': [39.72, 43.05], '9206': [39.92, 32.85], '9225': [36.90, 30.69],
+  '9335': [40.18, 29.06], '9377': [37.77, 29.08], '9397': [37.91, 40.22],
+  '9440': [39.75, 39.49], '9450': [39.90, 41.27], '9470': [39.77, 30.52],
+  '9479': [37.07, 37.38], '9516': [36.20, 36.16], '9541': [41.01, 28.96],
+  '9560': [38.42, 27.14], '9620': [38.73, 35.49], '9655': [40.76, 29.94],
+  '9676': [37.87, 32.49], '9703': [38.35, 38.31], '9713': [38.61, 27.42],
+  '9737': [37.31, 40.73], '9819': [41.28, 36.33], '9844': [39.74, 37.01],
+  '9901': [41.00, 39.72], '9921': [37.15, 38.79], '9929': [38.49, 43.38],
+  '9947': [41.45, 31.79], '9954': [38.37, 34.02], '9967': [37.18, 33.22],
 };
 
 function findNearestCity(lat, lon) {
