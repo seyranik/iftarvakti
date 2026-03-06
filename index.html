@@ -19,14 +19,15 @@
 </head>
 <body class="dark">
 
-  <!-- Sticky top: ramazan progress + header -->
-  <div class="sticky-top">
+  <!-- SABİT ÜST BÖLÜM -->
+  <div id="top-bar">
+    <!-- Ramazan progress -->
     <div id="ramadan-progress" class="ramadan-progress hidden">
       <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
       <div class="progress-text"><span id="ramadan-day-text"></span></div>
     </div>
-    <div class="header-wrap">
-      <div class="header" style="max-width:1024px;margin:0 auto;padding:0.75rem 1rem;">
+    <!-- Header -->
+    <div class="header">
       <div class="city-selector">
         <svg class="icon-small" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
         <select id="city-select"></select>
@@ -39,10 +40,10 @@
           <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
         </button>
       </div>
-      </div>
-    </div><!-- /header-wrap -->
-  </div><!-- /sticky-top -->
+    </div>
+  </div><!-- /#top-bar -->
 
+  <!-- SAYFA İÇERİĞİ -->
   <div class="container">
 
     <!-- Geri sayım -->
@@ -115,7 +116,7 @@
       <p class="developer-credit">© 2026 <a href="https://github.com/seyranik" target="_blank" rel="noopener">Seyrani Kenger</a> — Namaz Vakti PWA</p>
     </div>
 
-  </div>
+  </div><!-- /.container -->
 
   <!-- Bildirim Paneli Modal -->
   <div id="notif-panel-overlay" class="modal-overlay hidden">

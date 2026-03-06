@@ -98,6 +98,18 @@ document.addEventListener('DOMContentLoaded', () => {
   $('notif-panel-overlay').addEventListener('click', e => { if (e.target === $('notif-panel-overlay')) closeNotifPanel(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal(); closeNotifPanel(); } });
 
+  // Top-bar yüksekliğini ölç ve container'a uygula
+  function adjustTopPadding() {
+    const tb = document.getElementById('top-bar');
+    if (tb) document.querySelector('.container').style.paddingTop = (tb.offsetHeight + 16) + 'px';
+  }
+  adjustTopPadding();
+  window.addEventListener('resize', adjustTopPadding);
+
+  // Ramazan progress açılınca yeniden hesapla
+  const origUpdateRamadan = updateRamadanProgress;
+  updateRamadanProgress = function() { origUpdateRamadan(); setTimeout(adjustTopPadding, 50); };
+
   // Konum izni: sadece şehir manuel seçilmemişse sor
   if (!localStorage.getItem('prayer-city-manual')) {
     setTimeout(tryGeoLocation, 800);
