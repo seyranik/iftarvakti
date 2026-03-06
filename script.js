@@ -164,9 +164,7 @@ async function fetchPrayerTimes() {
 
   try {
     const today = new Date();
-    const month = today.getMonth() + 1;
-    const year  = today.getFullYear();
-    const url   = `${API_BASE}/vakitler/${currentCity}/${year}/${month}`;
+    const url   = `${API_BASE}/vakitler/${currentCity}`;
     const res   = await fetch(url);
     monthlyData = await res.json();
 
