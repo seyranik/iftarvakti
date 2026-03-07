@@ -700,26 +700,29 @@ async function startQibla() {
 
 function startQiblaCompass() {
   if (!navigator.geolocation) { showQiblaError(); return; }
-  // Mevcut konum varsa kullan
   const savedLat = parseFloat(localStorage.getItem('qibla-lat'));
   const savedLon = parseFloat(localStorage.getItem('qibla-lon'));
   if (savedLat && savedLon) {
     qiblaAngle = calcQiblaAngle(savedLat, savedLon);
-    document.getElementById('qibla-permission').classList.add('hidden');
-    document.getElementById('qibla-compass').classList.remove('hidden');
-    window.addEventListener('deviceorientationabsolute', handleOrientation, true);
-    window.addEventListener('deviceorientation', handleOrientation, true);
+    showQiblaCompassUI();
     return;
   }
   navigator.geolocation.getCurrentPosition(pos => {
     localStorage.setItem('qibla-lat', pos.coords.latitude);
     localStorage.setItem('qibla-lon', pos.coords.longitude);
     qiblaAngle = calcQiblaAngle(pos.coords.latitude, pos.coords.longitude);
-    document.getElementById('qibla-permission').classList.add('hidden');
-    document.getElementById('qibla-compass').classList.remove('hidden');
-    window.addEventListener('deviceorientationabsolute', handleOrientation, true);
-    window.addEventListener('deviceorientation', handleOrientation, true);
+    showQiblaCompassUI();
   }, showQiblaError, { timeout: 8000 });
+}
+
+function showQiblaCompassUI() {
+  document.getElementById('qibla-permission').classList.add('hidden');
+  document.getElementById('qibla-compass').classList.remove('hidden');
+  // Önce eski listener'ları kaldır, sonra ekle
+  window.removeEventListener('deviceorientationabsolute', handleOrientation, true);
+  window.removeEventListener('deviceorientation', handleOrientation, true);
+  window.addEventListener('deviceorientationabsolute', handleOrientation, true);
+  window.addEventListener('deviceorientation', handleOrientation, true);
 }
 
 function handleOrientation(e) {

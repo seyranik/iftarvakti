@@ -244,15 +244,23 @@ h1,h2,h3,h4,h5,h6{ font-family:"Outfit",sans-serif; }
 
 
 /* ── Sayfa sistemi ───────────────────────────────────── */
-.page{ display:none; position:fixed; inset:0; z-index:90; overflow-y:auto; background:var(--bg-primary); }
-.page.active{ display:block; }
+.page{ display:none; }
+.page.active{
+  display:flex; flex-direction:column;
+  position:fixed; inset:0; z-index:110;
+  background:var(--bg-primary);
+  overflow-y:auto;
+}
 
 /* ── Kıble Pusulası ──────────────────────────────────── */
-.qibla-container{ max-width:480px; margin:0 auto; padding:1rem 1rem 2rem; }
-.qibla-section{ 
-  display:flex; flex-direction:column; align-items:center; 
-  padding-top:2rem; min-height:calc(100vh - 120px);
-  justify-content:center;
+.qibla-container{
+  max-width:480px; width:100%;
+  margin:0 auto; padding:1rem 1rem 2rem;
+  display:flex; flex-direction:column; flex:1;
+}
+.qibla-section{
+  display:flex; flex-direction:column; align-items:center;
+  justify-content:center; flex:1; padding:1rem 0 2rem;
 }
 .qibla-icon-wrap{ margin-bottom:1.5rem; opacity:0.85; }
 .qibla-perm-title{
