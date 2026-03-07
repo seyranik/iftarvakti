@@ -659,31 +659,18 @@ function parseTableDate(str) {
 function showPage(name) {
   const mainContainer = document.querySelector('.container');
   const qiblaPage = document.getElementById('qibla-page');
-
-  // Tüm sayfaları gizle
-  mainContainer.style.display = 'none';
-  qiblaPage.classList.remove('active');
-
-  // İlgili sayfayı göster
   if (name === 'home') {
     mainContainer.style.display = '';
+    qiblaPage.classList.remove('active');
   } else if (name === 'qibla') {
+    mainContainer.style.display = 'none';
     qiblaPage.classList.add('active');
     document.getElementById('qibla-city-label').textContent = `${CITY_NAMES[currentCity]} için Kıble Yönü`;
-  } else if (name === 'takvim') {
-    mainContainer.style.display = '';
-    openModal(); // Mevcut takvim modalını aç
-  } else if (name === 'bildirim') {
-    mainContainer.style.display = '';
-    toggleNotifPanel(); // Mevcut bildirim panelini aç
-  } else {
-    mainContainer.style.display = ''; // diğerleri şimdilik anasayfa
+    // İzin daha önce verilmişse direkt pusulayı aç
+    if (localStorage.getItem('qibla-permission') === 'granted') {
+      startQiblaCompass();
+    }
   }
-
-  // Nav aktif durumu
-  document.querySelectorAll('.bottom-nav-item').forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.page === name);
-  });
 }
 
 // ── Kıble Pusulası ─────────────────────────────────────
@@ -700,15 +687,33 @@ function calcQiblaAngle(lat, lon) {
 }
 
 async function startQibla() {
-  // iOS izin
+  // iOS izin — sadece ilk seferinde sor
   if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
     try {
       const p = await DeviceOrientationEvent.requestPermission();
       if (p !== 'granted') { showQiblaError(); return; }
     } catch(e) { showQiblaError(); return; }
   }
+  localStorage.setItem('qibla-permission', 'granted');
+  startQiblaCompass();
+}
+
+function startQiblaCompass() {
   if (!navigator.geolocation) { showQiblaError(); return; }
+  // Mevcut konum varsa kullan
+  const savedLat = parseFloat(localStorage.getItem('qibla-lat'));
+  const savedLon = parseFloat(localStorage.getItem('qibla-lon'));
+  if (savedLat && savedLon) {
+    qiblaAngle = calcQiblaAngle(savedLat, savedLon);
+    document.getElementById('qibla-permission').classList.add('hidden');
+    document.getElementById('qibla-compass').classList.remove('hidden');
+    window.addEventListener('deviceorientationabsolute', handleOrientation, true);
+    window.addEventListener('deviceorientation', handleOrientation, true);
+    return;
+  }
   navigator.geolocation.getCurrentPosition(pos => {
+    localStorage.setItem('qibla-lat', pos.coords.latitude);
+    localStorage.setItem('qibla-lon', pos.coords.longitude);
     qiblaAngle = calcQiblaAngle(pos.coords.latitude, pos.coords.longitude);
     document.getElementById('qibla-permission').classList.add('hidden');
     document.getElementById('qibla-compass').classList.remove('hidden');
@@ -745,11 +750,10 @@ function showQiblaError() {
   document.getElementById('qibla-error').classList.remove('hidden');
 }
 
-// ── Bottom Nav Event Listeners ─────────────────────────
+// ── Kıble Event Listeners ─────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.bottom-nav-item').forEach(btn => {
-    btn.addEventListener('click', () => showPage(btn.dataset.page));
-  });
+  document.getElementById('qibla-btn').addEventListener('click', () => showPage('qibla'));
+  document.getElementById('qibla-back').addEventListener('click', () => showPage('home'));
   document.getElementById('qibla-start-btn').addEventListener('click', startQibla);
   document.getElementById('qibla-retry-btn').addEventListener('click', () => {
     document.getElementById('qibla-error').classList.add('hidden');
